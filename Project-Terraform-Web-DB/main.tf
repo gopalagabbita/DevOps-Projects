@@ -25,16 +25,17 @@ resource "aws_subnet" "subnet_2" {
 
 # EC2 instance (Web server)
 resource "aws_instance" "web_server" {
-  ami           = "ami-0fff1b9a61dec8a5f"    # Replace with the correct AMI for your region
-  instance_type = "t3.micro"
-  subnet_id     = aws_subnet.subnet_1.id
-  security_groups = [aws_security_group.web_sg.name]
+  ami           = "ami-0fff1b9a61dec8a5f"  # Replace with your AMI ID
+  instance_type = "t3.micro"               # Replace with your desired instance type
+  subnet_id     = aws_subnet.subnet_1.id   # Ensure you're using a subnet ID
+
+  # Instead of security_groups, use vpc_security_group_ids
+  vpc_security_group_ids = [aws_security_group.web_sg.id]  # Reference security group by ID
 
   tags = {
     Name = "WebServerInstance"
   }
-
-  user_data = <<-EOF
+   user_data = <<-EOF
     #!/bin/bash
     yum install -y httpd
     systemctl start httpd
