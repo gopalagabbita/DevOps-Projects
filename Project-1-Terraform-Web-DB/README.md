@@ -1,7 +1,3 @@
-Terraform-web-db-project 
-
-Overview
-
 terraform-web-db-project/
 │
 ├── main.tf              # The main configuration file
