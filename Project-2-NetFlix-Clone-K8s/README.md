@@ -5,3 +5,4 @@ Project Flow
 3. Trivy
 4. Argo CD
 5. Kubernetes 
+6. SonarQube and Trivy
